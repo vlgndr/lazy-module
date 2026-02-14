@@ -13,7 +13,7 @@ function New-LazyModule {
   $Psd1 = "$Name.psd1"
   $Psm1 = "$Name.psm1"
 
-  # Path has not been passed, so I create the folder structure in the current path
+  # Path has not been passed, so I create the folder structure at the current path
   if (-not $Path) {
     $CurrentLocation = Get-Location | Select-Object -ExpandProperty Path
     $FolderPath = Join-Path $CurrentLocation $Name
@@ -21,13 +21,13 @@ function New-LazyModule {
 
     # There is a folder with the same name, write error and exit
     if ((Test-Path $FullPath) -and -not $Force ) {
-      Write-Error "Module folder already exists in $FullPath. Use -Force to continue."
+      Write-Error "Module folder already exists at $FullPath. Use -Force to continue."
       return
     } 
 
     # Proceed with the creation
     New-Item -Type File -Path $FullPath -Force
-    Write-Verbose "Created $Psd1 in $FolderPath"
+    Write-Verbose "Created $Psd1 at $FolderPath"
     $Path = $FullPath
   } 
   # Path has been passed, create the folder there
@@ -35,15 +35,15 @@ function New-LazyModule {
     $FolderPath = Join-Path $Path $Name
     $FullPath = Join-Path $FolderPath $Psd1
     if ((Test-Path $FullPath) -and -not $Force ) {
-      Write-Error "Module folder already exists in $FullPath. Use -Force to continue."
+      Write-Error "Module folder already exists at $FullPath. Use -Force to continue."
       return
     } 
     New-Item -Type File -Path $FullPath -Force
-    Write-Verbose "Created $Psd1 in $FolderPath"
+    Write-Verbose "Created $Psd1 at $FolderPath"
     $Path = $FullPath
   }
 
-  # If no Author has been passed, use Git user.name or $Env:USERNAME
+  # If no Author has been passed, use Git user.name otherwise use $Env:USERNAME
   if (-not $Author) {
     if (Get-Command git -ErrorAction SilentlyContinue) {
       $Author = git config user.name
@@ -54,14 +54,14 @@ function New-LazyModule {
     }
   }
 
-  # Create Junction to have a linked folder in the $PSModulePath
+  # Create Junction to have a linked folder at the $PSModulePath
   if (-not $NoJunction) {
     $PSModulePath = "$HOME\Documents\PowerShell\Modules"
     $FullPath = Join-Path $PSModulePath $Name
     $CurrentLocation = Get-Location | Select-Object -ExpandProperty Path
     $FolderPath = Join-Path $CurrentLocation $Name
     if ((Test-Path $FullPath) -and -not $Force ) {
-      Write-Error "Module folder already exists in $FullPath. Use -Force to continue."
+      Write-Error "Module folder already exists at $FullPath. Use -Force to continue."
       return
     } 
     New-Item -ItemType Junction -Path $FullPath -Target $FolderPath -Force
