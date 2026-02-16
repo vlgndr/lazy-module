@@ -9,21 +9,21 @@
   $Psd1 = "$Name.psd1"
   $Psm1 = "$Name.psm1"
 
-  # Path has not been passed, so I create the folder structure at the current path
+  # Path has not been passed, so I create the directory structure at the current path
   if (-not $Path) {
     $CurrentLocation = Get-Location | Select-Object -ExpandProperty Path
     $ModulePath = Join-Path $CurrentLocation $Name
     $Psd1Path = Join-Path $ModulePath $Psd1
   }  
 
-  # Path has been passed, create the folder there
+  # Path has been passed, create the directory there
   else {
     $ModulePath = Join-Path $Path $Name
     $Psd1Path = Join-Path $ModulePath $Psd1
   }
 
   if ((Test-Path $Psd1Path) -and -not $Force ) {
-    Write-Error "Module folder already exists at $Psd1Path. Use -Force to continue."
+    Write-Error "Module directory already exists at $Psd1Path. Use -Force to continue."
     return
   } 
   Write-Verbose "Creating $Psd1 at $ModulePath"

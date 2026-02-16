@@ -1,3 +1,15 @@
+<#
+.SYNOPSIS
+  Remove the Module from the PSModulePath.
+.DESCRIPTION
+  Remove the Junction, if exists, from the PSModulePath with a simple command.
+.NOTES
+  Author: vlgndr
+  Module: LazyModule
+.EXAMPLE
+  Remove-LazyModule AwesomePowershell -verbose
+  VERBOSE: Removing Junction at $HOME\Documents\PowerShell\Modules\AwesomePowershell
+#>
 function Remove-LazyModule {
   [CmdletBinding()]
   param (

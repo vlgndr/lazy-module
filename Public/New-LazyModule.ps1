@@ -1,3 +1,25 @@
+<#
+.SYNOPSIS
+  Quickly scaffold a PowerShell Module.
+.DESCRIPTION
+  Create a PowerShell Module that includes psd1, psm1, Public and Private directories and a Junction to the PSModulePath pointing to the current project.
+  Junction is useful if you want to keep your module separate, in a specific directory (like a Project directory), maybe with Git, and having the same Module linked to the PSModulePath. By doing so, you can always work in you preferred directory, without worrying about the PSModulePath at all.
+.NOTES
+  Author: vlgndr
+  Module: LazyModule
+.EXAMPLE
+  Create the AwesomePowerShell Module in the Projects directory, create a Junction in the PSModulePath and show verbosity
+  New-LazyModule AwesomePowerShell -Path $HOME\Projects -Verbose
+  VERBOSE: Creating AwesomePowerShell.psd1 at $HOME\Projects\AwesomePowerShell
+  VERBOSE: Getting Author from Git
+  VERBOSE: Creating Junction at $HOME\Documents\PowerShell\Modules\AwesomePowerShell
+
+.EXAMPLE
+  Create the AwesomePowerShell Module in the current directory, do not create a Junction and show verbosity
+  New-LazyModule AwesomePowerShell -NoJunction -Verbose
+  VERBOSE: Creating AwesomePowerShell.psd1 at $HOME\AwesomePowerShell
+  VERBOSE: Getting Author from Git
+#>
 function New-LazyModule {
   [CmdletBinding()]
   param (
@@ -13,8 +35,8 @@ function New-LazyModule {
   $Psd1Path = New-ModuleStructure -Path $Path -Name $Name -Force $Force
 
   if (-not $Author) {
-    $Author = Get-ModuleAuthor -Author $Author
-  }
+    $Author = Get-ModuleAuthor 
+  } 
 
   if (-not $NoJunction) {
     New-ModuleJunction -Name $Name -Path $Path -Force $Force
