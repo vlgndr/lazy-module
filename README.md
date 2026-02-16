@@ -132,16 +132,3 @@ Think of it as a symbolic bridge between *development* and
 
 -   PowerShell 5.1+ or PowerShell 7+
 -   Windows (junction support required)
--   Git (optional, used to detect author information)
-
-------------------------------------------------------------------------
-
-## 👤 Author
-
-**vlgndr**
-
-------------------------------------------------------------------------
-
-## 📄 License
-
-Add your preferred license here (MIT recommended).
