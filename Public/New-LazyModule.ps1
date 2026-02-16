@@ -8,16 +8,16 @@
   Author: vlgndr
   Module: LazyModule
 .EXAMPLE
-  Create the AwesomePowerShell Module in the Projects directory, create a Junction in the PSModulePath and show verbosity
-  New-LazyModule AwesomePowerShell -Path $HOME\Projects -Verbose
-  VERBOSE: Creating AwesomePowerShell.psd1 at $HOME\Projects\AwesomePowerShell
+  Create the DemoModule Module in the Projects directory, create a Junction in the PSModulePath and show verbosity
+  New-LazyModule DemoModule -Path $HOME\Projects -Verbose
+  VERBOSE: Creating DemoModule.psd1 at $HOME\Projects\DemoModule
   VERBOSE: Getting Author from Git
-  VERBOSE: Creating Junction at $HOME\Documents\PowerShell\Modules\AwesomePowerShell
+  VERBOSE: Creating Junction at $HOME\Documents\PowerShell\Modules\DemoModule
 
 .EXAMPLE
-  Create the AwesomePowerShell Module in the current directory, do not create a Junction and show verbosity
-  New-LazyModule AwesomePowerShell -NoJunction -Verbose
-  VERBOSE: Creating AwesomePowerShell.psd1 at $HOME\AwesomePowerShell
+  Create the DemoModule Module in the current directory, do not create a Junction and show verbosity
+  New-LazyModule DemoModule -NoJunction -Verbose
+  VERBOSE: Creating DemoModule.psd1 at $HOME\DemoModule
   VERBOSE: Getting Author from Git
 #>
 function New-LazyModule {

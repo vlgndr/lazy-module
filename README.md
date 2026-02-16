@@ -98,10 +98,10 @@ Remove-LazyModule [[-Name] <String>] [<CommonParameters>]
 
 After running `New-LazyModule`, the project structure looks like:
 
-    AwesomePowerShell/
+    DemoModule/
     │
-    ├── AwesomePowerShell.psd1
-    ├── AwesomePowerShell.psm1
+    ├── DemoModule.psd1
+    ├── DemoModule.psm1
     │
     ├── Public/
     │   └── (exported functions)

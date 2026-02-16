@@ -7,8 +7,8 @@
   Author: vlgndr
   Module: LazyModule
 .EXAMPLE
-  Remove-LazyModule AwesomePowershell -verbose
-  VERBOSE: Removing Junction at $HOME\Documents\PowerShell\Modules\AwesomePowershell
+  Remove-LazyModule DemoModule -verbose
+  VERBOSE: Removing Junction at $HOME\Documents\PowerShell\Modules\DemoModule
 #>
 function Remove-LazyModule {
   [CmdletBinding()]
