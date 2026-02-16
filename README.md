@@ -10,6 +10,16 @@ were installed globally.
 
 ------------------------------------------------------------------------
 
+## 📦 Installation
+
+
+```powershell
+git clone https://github.com/vlgndr/cheatsheets.git
+Import-Module .\cheatsheets\CheatSheets.psd1
+```
+
+------------------------------------------------------------------------
+
 ## ✨ Features
 
 -   Quickly scaffold a fully structured PowerShell module
